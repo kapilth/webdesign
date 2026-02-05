@@ -1,0 +1,40 @@
+name: Deploy to GitHub Pages (Alternative)
+
+# This workflow uses peaceiris/actions-gh-pages which may work better for initial setup
+# It creates a gh-pages branch which can then be used as the Pages source
+
+on:
+  workflow_dispatch:  # Manual trigger only for now
+
+permissions:
+  contents: write  # Need write permission to push to gh-pages branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Add .nojekyll file
+        run: touch ./dist/.nojekyll
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # This will create a gh-pages branch
+          # After this runs, you can set Pages source to gh-pages branch in settings

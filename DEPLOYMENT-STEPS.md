@@ -3,6 +3,16 @@
 ## Issue Identified
 The GitHub Actions workflow is failing to deploy because GitHub Pages hasn't been properly configured in the repository settings.
 
+**Error from workflow:**
+```
+Error: Failed to create deployment (status: 404)
+Ensure GitHub Pages has been enabled: https://github.com/kapilth/webdesign/settings/pages
+```
+
+This error means GitHub Pages is either:
+- Not enabled at all, OR
+- Not configured to use "GitHub Actions" as the deployment source
+
 ## Solution
 
 ### Step 1: Enable GitHub Pages (Required - One-time Setup)
@@ -74,3 +84,29 @@ The GitHub Actions workflow has been updated to:
 1. **You must manually enable GitHub Pages** in the repository settings as described in Step 1
 2. Once enabled, the deployment will work automatically
 3. The website will be accessible at https://kapilth.github.io/webdesign/
+
+## Alternative Approach (If the Above Doesn't Work)
+
+If you're having trouble with the GitHub Actions deployment method, try this:
+
+1. Run the alternative workflow:
+   - Go to **Actions** tab
+   - Select **"Deploy to GitHub Pages (Alternative)"**
+   - Click **"Run workflow"**
+   - This will create a `gh-pages` branch with the built site
+
+2. Then configure GitHub Pages to use the `gh-pages` branch:
+   - Go to Settings > Pages
+   - Source: Select **"Deploy from a branch"**
+   - Branch: Select **"gh-pages"** and **"/ (root)"**
+   - Save
+
+3. The site will be live at https://kapilth.github.io/webdesign/
+
+## Why This Is Happening
+
+The error "Failed to create deployment (status: 404)" specifically indicates that GitHub Pages API endpoint doesn't exist for this repository, which means:
+- GitHub Pages has never been enabled, OR  
+- GitHub Pages was previously enabled but has been disabled/removed
+
+The fix requires a one-time manual configuration in the repository settings. After that, all future deployments will work automatically.
