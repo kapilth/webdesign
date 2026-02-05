@@ -1,5 +1,9 @@
 # French Creek Manor - Website Redesign Concepts
 
+> **📢 DEPLOYMENT STATUS**: GitHub Pages needs to be enabled. See [DEPLOYMENT-STEPS.md](DEPLOYMENT-STEPS.md) for instructions.
+> 
+> **Quick Fix**: Go to [Repository Settings → Pages](https://github.com/kapilth/webdesign/settings/pages) and set Source to "GitHub Actions"
+
 This project contains 3 different design concepts for the French Creek Manor event venue website.
 
 ## 🎨 Design Versions
@@ -12,6 +16,15 @@ Sophisticated split-screen layout with minimal design and elegant transitions. F
 
 ### Design 3 - Dynamic Carousel
 Interactive full-screen slideshow that rotates through different venue spaces with stunning transitions.
+
+---
+
+## 🚀 Live Demo
+
+**🌐 Live Site**: https://kapilth.github.io/webdesign/
+
+> **⚠️ Important**: If the site shows a 404 error, GitHub Pages needs to be enabled first.
+> Follow the instructions in [DEPLOYMENT-STEPS.md](DEPLOYMENT-STEPS.md) to enable deployment.
 
 ---
 
